@@ -1,0 +1,1429 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta charset="utf-8" /> 
+<link rel="stylesheet" href="instruction.css" type="text/css" /> 
+<title>说明书</title> 
+<style>
+        
+body {
+    background: #BBBBBB;
+    color: black;
+}
+
+table {
+        width: auto;
+        margin: 0 auto;
+        border: 1px solid #000000;
+        border-collapse: collapse;
+    }
+    
+    th,td {
+        border: 1px solid #000000;
+        text-align: left;
+    }
+
+/* common button */
+#but {
+    background-color:#CCCCCC;
+    color:black;
+
+    text-transform:uppercase;
+
+    font-size:1.2em;
+    font-weight:bold;
+    font-family:monospace;
+
+    padding: 1px 12px 1px 12px;
+
+    border:thin solid black;
+    border-radius:3px;
+    
+    width:12px;
+    white-space: nowrap;
+}
+
+/* F button */
+#but_f {
+    background-color:#F5E345;
+    color:black;
+
+    text-transform:uppercase;
+
+    font-size:1.2em;
+    font-weight:bold;
+    font-family:monospace;
+
+    padding: 1px 12px 1px 12px;
+
+    border:thin solid black;
+    border-radius:3px;
+    
+    width:12px;
+    white-space: nowrap;
+}
+
+/* K button */
+#but_k {
+    background-color:#71E3FF;
+    color:white;
+
+    text-transform:uppercase;
+
+    font-size:1.2em;
+    font-weight:bold;
+    font-family:monospace;
+
+    padding: 1px 12px 1px 12px;
+
+    border:thin solid black;
+    border-radius:3px;
+    
+    width:12px;
+    white-space: nowrap;
+}
+
+/* CX button */
+#but_cx {
+    background-color:#F00505;
+    color:white;
+
+    text-transform:uppercase;
+
+    font-size:1.2em;
+    font-weight:bold;
+    font-family:monospace;
+
+    padding: 1px 8px 1px 8px;
+
+    border:thin solid black;
+    border-radius:3px;
+    
+    width:12px;
+    white-space: nowrap;
+}
+
+/* black button */
+#but_b {
+    background-color:black;
+    color:white;
+
+    text-transform:uppercase;
+
+    font-size:1.1em;
+    font-weight:bold;
+    font-family:monospace;
+
+    padding:1px 6px 1px 6px;
+    
+    border:thin solid white;
+    border-radius:3px;
+    width:12px;
+    white-space: nowrap;
+}
+
+#code {
+    background-color:#103810;
+    color:#77FF77;
+    
+    font-family: monospace;
+    font-size:1.3em;
+    font-weight:bold;
+    padding: 1px 2px 1px 2px;
+    white-space: nowrap;
+}
+
+#reg {
+    color:white;
+    font-weight:bold;
+}
+
+#op_f {
+    color:yellow;
+}
+
+#op_k {
+    color:#167ed7;
+}
+
+    </style>
+</head> 
+
+<body> 
+
+<h2>微计算器B3-34/MK-52/MK-54/MK-61. 操作指南.</h2>
+
+    <ul>
+        <li><a href=#common>通用信息</a>
+        <ul>
+            <li><a href=#regs>计算器寄存器</a></li>
+        </ul></li>
+        
+        <li><a href=#avt_mode>计算器在自动模式下的工作</a>
+        <ul>
+                <li><a href=#calculations>执行操作</a></li>
+                <li><a href=#stack>使用堆栈存储器</a></li>
+        </ul></li>
+        
+        <li><a href=#prog_mode>计算器在“编程”模式下的工作</a>
+        <ul>
+            <li><a href=#prog_mode_common>通用信息</a></li>
+            <li><a href=#steps>程序计算的步骤</a></li>
+            <li><a href=#goto>跳转命令</a></li>
+            <li><a href=#addr_mod>地址修改</a></li>
+            <li><a href=#loops>组织循环</a></li>
+            <li><a href=#indir_reg>间接访问寄存器</a></li>
+        </ul></li>
+
+        <li><a href=#example1>解二次方程的程序</a>
+        <ul>
+            <li><a href=#example_calc1>执行计算</a></li>
+        </ul></li>
+
+        <li><a href=#example2>蒙特卡洛方法计算圆周率的程序</a>
+        <ul>
+            <li><a href=#example_calc2>执行计算</a></li>
+        </ul></li>
+
+        <li><a href=#translation>翻译说明</a>
+        
+    </ul>
+
+    <a name=common></a>
+    <h3>通用信息</h3>
+    <p>
+        在微计算器中输入数字、操作和命令是通过按下相应的键来实现的。
+</p>
+<p>
+        许多键具有双重和三重符号。键上方的符号颜色与键<span id=but_f>f</span>和<span id=but_k>k</span>的颜色相对应。
+</p>
+<p>
+        输入面板上显示的函数符号的操作如下：首先按下键<span id=but_f>f</span>或<span id=but_k>k</span>，然后按下显示要输入函数的符号的键。
+</p>
+<p>
+       键的功能见表格
+        <a href="#table_keys">功能键的功能</a> 和
+        <a href="#table_prog_keys">编程时使用的键的功能</a>。
+    </p>
+    <p>
+        <span id=but_k>k</span>-功能仅在MK-52/MK-61中提供。
+    </p>
+
+    <a name=table_keys>
+    <table width=100%>
+        <caption> 功能键的功能 </caption>
+
+        <tr><th>按键</th><th>功能</th><th>代码</th></tr>
+
+        <tr><td><span id=but_f>f</span></td>
+            <td>切换到第二组符号</td><td></td></tr>
+
+        <tr><td><span id=but_k>k</span></td>
+            <td>切换到第二组符号。间接跳转和间接访问地址寄存器</td>
+            <td></td></tr>
+
+        <tr><td><span id=but>0</span><br>-<br><span id=but>9</span></td>
+	    <td>将数字0到9输入到X寄存器</td>
+	    <td><span id=code>00</span><br>-<br><span id=code>09</span></td></tr>
+
+        <tr><td><span id=but>&bull;</span></td>
+            <td>输入小数点</td>
+            <td><span id=code>0-</span></td></tr>
+
+        <tr><td><span id=but>B↑</span></td>
+            <td>分隔输入的数字并移动堆栈中的信息</td>
+            <td><span id=code>0E</span></td></tr>
+
+        <tr><td><span id=but_cx>cx</span></td>
+            <td>重置X寄存器的内容</td>
+            <td><span id=code>0Г</span></td></tr>
+
+        <tr><td><span id=but>+</span></td>
+            <td>将Y寄存器的内容与X寄存器的内容相加并将结果传输到X寄存器</td>
+            <td><span id=code>10</span></td></tr>
+
+        <tr><td><span id=but>-</span></td>
+            <td>从Y寄存器的内容中减去X寄存器的内容并将结果传输到X寄存器</td>
+            <td><span id=code>11</span></td></tr>
+
+        <tr><td><span id=but>&times;</span></td>
+            <td>将Y寄存器的内容乘以X寄存器的内容并将结果传输到X寄存器</td>
+            <td><span id=code>12</span></td></tr>
+
+        <tr><td><span id=but>&divide;</span></td>
+            <td>将Y寄存器的内容除以X寄存器的内容并将结果传输到X寄存器</td>
+            <td><span id=code>13</span></td></tr>
+
+        <tr><td><span id=but>⇋</span></td>
+            <td>交换X和Y寄存器之间的内容</td>
+            <td><span id=code>14</span></td></tr>
+
+        <tr><td><span id=but>/-/</span></td>
+            <td>改变数字的符号和顺序</td>
+            <td><span id=code>0L</span></td></tr>
+
+        <tr><td><span id=but>ВП</span></td>
+            <td>用于输入一个数字的指数</td>
+            <td><span id=code>0C</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>10<sup>x</sup></span></td>
+            <td>计算幂函数 10<sup>x</sup></td>
+            <td><span id=code>15</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>e<sup>x</sup></span></td>
+            <td>计算指数函数 <i>e</i><sup>x</sup></td>
+            <td><span id=code>16</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>lg</span></td>
+            <td>计算十进制对数</td>
+            <td><span id=code>17</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>ln</span></td>
+            <td>计算自然对数</td>
+            <td><span id=code>18</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>sin</span></td>
+            <td>计算正弦函数</td>
+            <td><span id=code>1C</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>cos</span></td>
+            <td>计算余弦函数</td>
+            <td><span id=code>1Г</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>tg</span></td>
+            <td>计算正切函数</td>
+            <td><span id=code>1E</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>sin<sup>-1</sup></span></td>
+            <<td>计算反正弦函数</td>
+            <td><span id=code>19</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>cos<sup>-1</sup></span></td>
+            <td>计算反余弦函数</td>
+            <td><span id=code>1-</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>tg<sup>-1</sup></span></td>
+            <td>计算反正切函数</td>
+            <td><span id=code>1L</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>√</span></td>
+            <td>计算平方根</td>
+            <td><span id=code>21</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>1/x</span></td>
+            <td>计算X的倒数</td>
+            <td><span id=code>23</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>x<sup>2</sup></span></td>
+            <td>将数字X平方</td>
+            <td><span id=code>22</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>x<sup>y</sup></span></td>
+            <td>将数字X提升到Y的幂</td>
+            <td><span id=code>24</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>π</span></td>
+            <td>调用常数π=3.1415926</td>
+            <td><span id=code>20</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>⥀</span></td>
+            <td>堆栈信息的循环移动</td>
+            <td><span id=code>25</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>Bx</span></td>
+            <td>恢复上一个结果</td><td><span id=code>0&nbsp;</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>CF</span></td>
+            <td>重置到第二组符号的跳转</td><td></td></tr>
+
+        <tr><td><span id=but_b>X&rarr;п</span></span>&nbsp;<span id=but>r</span></td>
+            <td>将X寄存器的内容写入RGr寄存器。寄存器编号和代码见表格
+            <a href=#table_regs>寄存器编号和代码</a></td>
+            <td><span id=code>4r</span></td></tr>
+
+        <tr><td><span id=but_b>п&rarr;X</span></span>&nbsp;<span id=but>r</span></td>
+            <td>从RGr寄存器调用内容到X寄存器。寄存器编号和代码见表格
+            <a href=#table_regs>寄存器编号和代码</a></td>
+            <td><span id=code>6r</span></td></tr>
+
+        <tr><td><span id=but_k>k</span>&nbsp;<span id=op_k>[x]</span></td>
+            <td>提取数字的整数部分</td>
+            <td><span id=code>34</span></td></tr>
+
+        <tr><td><span id=but_k>k</span>&nbsp;<span id=op_k>{x}</span></td>
+            <td>提取数字的小数部分</td>
+            <td><span id=code>35</span></td></tr>
+
+        <tr><td><span id=but_k>k</span>&nbsp;<span id=op_k>max</span></td>
+            <td>确定X和Y寄存器中两个数字的最大值</td>
+            <td><span id=code>36</span></td></tr>
+
+        <tr><td><span id=but_k>k</span>&nbsp;<span id=op_k>|x|</span></td>
+            <td>确定数字的绝对值</td>
+            <td><span id=code>31</span></td></tr>
+
+        <tr><<td><span id=but_k>k</span>&nbsp;<span id=op_k>ЗН</span></td>
+            <td>确定数字的符号</td>
+            <td><span id=code>32</span></td></tr>
+
+        <tr><td><span id=but_k>k</span>&nbsp;<span id=op_k>&rarr;&deg;&prime;&Prime;</span></td>
+            <td>将以度（小时）、分、秒和秒的小数部分表示的角度（时间量）转换为以度（小时）和度（小时）的小数部分表示的值</td>
+            <td><span id=code>2-</span></td></tr>
+
+        <tr><td><span id=but_k>k</span>&nbsp;<span id=op_k>&larr;&deg;&prime;&Prime;</span></td>
+            <td>将以度（小时）和度（小时）的小数部分表示的角度（时间量）转换为以度（小时）、分、秒和秒的小数部分表示的值</td>
+            <td><span id=code>30</span></td></tr>
+
+        <tr><td><span id=but_k>k</span>&nbsp;<span id=op_k>&rarr;&deg;&prime;</span></td>
+            <td>将以度（小时）、分和分的小数部分表示的角度（时间量）转换为以度（小时）和度（小时）的小数部分表示的值</td>
+            <td><span id=code>26</span></td></tr>
+
+	<tr><td><span id=but_k>k</span>&nbsp;<span id=op_k>&larr;&deg;&prime;</span></td> 
+	    <td>将以度（小时）和度（小时）的小数部分表示的角度（时间量）转换为以度（小时）、分和分的小数部分表示的值</td> 
+	    <td><span id=code>33</span></td></tr>
+
+        <tr><td><span id=but_k>k</span>&nbsp;<span id=op_k>СЧ</span></td>
+            <td>生成0到1之间的伪随机数</td>
+            <td><span id=code>3L</span></td></tr>
+
+        <tr><td><span id=but_k>k</span>&nbsp;<span id=op_k>∧</span></td>
+            <td>按位逻辑乘法</td>
+            <td><span id=code>37</span></td></tr>
+
+        <tr><td><span id=but_k>k</span>&nbsp;<span id=op_k>∨</span></td>
+            <td>按位逻辑加法</td>
+            <td><span id=code>38</span></td></tr>
+
+        <tr><td><span id=but_k>k</span>&nbsp;<span id=op_k>⊕</span></td>
+            <<td>逻辑运算“异或”</td>
+            <td><span id=code>39</span></td></tr>
+
+        <tr><td><span id=but_k>k</span>&nbsp;<span id=op_k>ИНВ</span></td>
+            <td>逻辑运算“取反”</td>
+            <td><span id=code>3-</span></td></tr>
+
+    </table>
+
+    
+
+    <br><br>
+    <a name=table_prog_keys>
+    <table width=100%>
+        <caption>编程时使用的键的功能</caption>
+        <tr><th>键</th><th>功能</th><th>代码</th></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>ПРГ</span></td>
+            <td>切换到“编程”模式</td><td></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>АВТ</span></td>
+            <td>切换到“自动工作”模式</td><td></td></tr>
+
+        <tr><td><span id=but_b>БП</span></td>
+            <td>无条件跳转</td><td><span id=code>51</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>x&lt;0</span></td>
+            <td>条件跳转，如果x<0</td><td><span id=code>5C</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>x=0</span></td>
+            <td>条件跳转，如果x=0</td><td><span id=code>5E</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>x&ge;0</span></td>
+            <td>条件跳转，如果x&ge;0</td><td><span id=code>59</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>x&ne;0</span></td>
+            <td>条件跳转，如果x&ne;0</td><td><span id=code>57</span></td></tr>
+
+        <tr><td><span id=but_b>ПП</span></td>
+            <td>
+                1. 在“编程”模式下跳转到子程序<br>
+
+                2. 在“自动工作”模式下逐条执行程序
+            </td>
+            <td><span id=code>53</span></td></tr>
+
+        <tr><td><span id=but_b>В/О</span></td>
+            <td>
+                1. 在“编程”模式下从子程序返回<br>
+
+                2. 在“自动工作”模式下跳转到零地址
+            </td>
+            <td><span id=code>52</span></td></tr>
+
+        <tr><td><span id=but_b>С/П</span></td>
+            <td>
+                1. 在“编程”模式下停止程序执行并将X寄存器的内容固定在显示器上<br>
+
+                2. 在“自动工作”模式下开始按程序计算，以及在出现循环时停止计算
+            </td>
+            <td><span id=code>50</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>L0</span></td>
+            <td>使用RG0寄存器组织循环</td>
+	    <td><span id=code>5Г</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>L1</span></td>
+            <td>使用RG1寄存器组织循环</td>
+	    <td><span id=code>5L</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>L2</span></td>
+            <td>使用RG2寄存器组织循环</td>
+	    <td><span id=code>58</span></td></tr>
+
+        <tr><td><span id=but_f>f</span>&nbsp;<span id=op_f>L3</span></td>
+	    <td>使用RG3寄存器组织循环</td>
+	    <td><span id=code>5-</span></td></tr>
+
+        <tr><td><span id=but_k>k</span>&nbsp;<span id=op_k>НОП</span></td>
+            <td>无操作（在编辑程序时）</td>
+            <td><span id=code>54</span></td></tr>
+
+        <tr><td><span id=but_b>шг→</span></td>
+            <td>在“编程”模式下按地址升序逐条执行程序</td>
+            <td></td></tr>
+
+        <tr><td><span id=but_b>←шг</span></td>
+            <td>在“编程”模式下按地址降序逐条执行程序</td>
+            <td></td></tr>
+
+        <tr><td colspan=3 align=center>
+                <b><i>间接寻址命令</i></b><br>
+                这些命令以键<span id=but_k>k</span>开始，后面跟着下面列出的键。
+            </td></tr>
+
+            <tr><td><span id=but_b>БП</span>&nbsp;<span id=but>R</span></span></td>
+            <td>根据存储在地址寄存器中的修改后的地址进行间接无条件跳转，该地址寄存器的索引包含在命令中</td>
+            <td><span id=code>8r</span></td></tr>
+
+            <tr><td>&nbsp;&nbsp;<span id=op_f>x&lt;0</span>&nbsp;<span id=but>R</span></span></td>
+            <td>在执行条件x<0的间接跳转时，根据存储在地址寄存器中的修改后的地址进行跳转，该地址寄存器的索引包含在命令中</td>
+            <td><span id=code>Cr</span></td></tr>
+
+            <tr><td>&nbsp;&nbsp;<span id=op_f>x=0</span>&nbsp;<span id=but>R</span></span></td>
+            <td>在执行条件x=0的间接跳转时，根据存储在地址寄存器中的修改后的地址进行跳转，该地址寄存器的索引包含在命令中</td>
+            <td><span id=code>Er</span></td></tr>
+
+            <tr><td>&nbsp;&nbsp;<span id=op_f>x&le;0</span>&nbsp;<span id=but>R</span></span></td>
+            <td>在执行条件x&le;0的间接跳转时，根据存储在地址寄存器中的修改后的地址进行跳转，该地址寄存器的索引包含在命令中</td>
+            <td><span id=code>9r</span></td></tr>
+
+            <tr><td>&nbsp;&nbsp;<span id=op_f>x&ne;0</span>&nbsp;<span id=but>R</span></span></td>
+            <td>在执行条件x&ne;0的间接跳转时，根据存储在地址寄存器中的修改后的地址进行跳转，该地址寄存器的索引包含在命令中</td>
+            <td><span id=code>7r</span></td></tr>
+
+            <tr><td><span id=but_b>ПП</span>&nbsp;<span id=but>R</span></span></td>
+            <td>根据存储在地址寄存器中的修改后的地址进行间接跳转到子程序，该地址寄存器的索引包含在命令中</td>
+            <td><span id=code>-r</span></td></tr>
+
+
+            <tr><td><span id=but_b>X&rarr;п</span></span>&nbsp;<span id=but>r</span></span></td>
+            <td>根据存储在地址寄存器中的修改后的地址间接将X寄存器的内容写入寄存器，该地址寄存器的索引包含在命令中</td>
+            <td><span id=code>Lr</span></td></tr>
+
+            <tr><td><span id=but_b>п&rarr;X</span></span>&nbsp;<span id=but>r</span></span></td>
+            <td>根据存储在地址寄存器中的修改后的地址间接将地址寄存器的内容调用到X寄存器，该地址寄存器的索引包含在命令中</td>
+            <td><span id=code>Гr</span></td></tr>
+    </table>
+
+    <p><i>注：对于与寄存器相关的命令，代码的第二位数字（<span id=code>r</span>）与表格<a href=#table_regs>寄存器编号和代码</a>中的寄存器编号相对应。
+    </i></p> 
+
+    <a name=regs></a><h4>计算器寄存器</h4>
+
+    <p>
+        微计算器中提供了用于存储原始数据和中间结果的寄存器内存，包括15个（B3-34和MK-54中有14个）可寻址寄存器RG0, RG1-RG9, RGa, RGb, RGc, RGd, 
+        RGe（B3-34和MK-54中不存在）。
+    </p>
+    <a name=table_regs>
+    <div align=center>
+    <table>
+        <caption>寄存器编号和代码</caption>
+        <tr><th>&nbsp;寄存器编号&nbsp;</th><th>&nbsp;代码&nbsp;</th></tr>
+        <tr><td>RG0<br>-<br>RG9</td><td><span id=code>0</span><br>-<br><span id=code>9</span></td></tr>
+	<tr><td>RGa</td><td><span id=code>-</span></td></tr>
+	<tr><td>RGb</td><td><span id=code>L</span></td></tr>
+	<tr><td>RGc</td><td><span id=code>C</span></td></tr>
+        <tr><td>RGd</td><td><span id=code>Г</span></td></tr>
+        <tr><td>RGe</td><td><span id=code>E</span></td></tr>
+    </table>
+    </div>
+
+    <p>
+        通过按下键
+	<span id=but_b>x&rarr;п</span>
+	和与地址寄存器索引相匹配的键<span id=but>0</span>-<span id=but>9</span>，
+        <span id=reg>a</span>, <span id=reg>b</span>, <span id=reg>c</span>, <span id=reg>d</span>, 
+        <span id=reg>e</span>，可以将数字写入可寻址寄存器。此时，传输到地址寄存器的数字保留在X寄存器中。
+    </p>
+    <p>
+        通过按下键
+	<span id=but_b>п&rarr;х</span>和地址寄存器索引键，可以调用地址寄存器中的数字到X寄存器。
+    </p>
+    <p>
+        除了可寻址寄存器外，微计算器还具有堆栈内存，由四个寄存器组成：X, Y, Z和T。X和Y寄存器用于运算。
+    </p>
+    <p>
+        微计算器中有一个 X1 寄存器，用于记录执行操作前的数值。
+    </p>
+
+    <a name=avt_mode></a><h3>计算器在自动模式下的工作</h3>
+    <p>
+        微计算器上的计算是在“自动工作”模式下进行的。当微计算器通电或从“编程”模式按下键
+	<span id=but_f>f</span>&nbsp;
+	<span id=op_f>АВТ</span>时，将自动设置为该模式（如果之前计算器处于“编程”模式）。
+    </p>
+
+    <a name=calculations></a><h4>执行操作</h4>
+    <p>
+         单操作数操作是在 X 寄存器中的数字上执行的。单操作数操作的结果写入 X 寄存器，其他寄存器的内容不变。
+    </p>
+    <p>
+        示例：
+        <div align=center>
+            <span id=but>3</span>&nbsp;
+            <span id=but_f>f</span>&nbsp;<span id=op_f>x<sup>2</sup></span>&nbsp;&nbsp;&rArr;&nbsp;&nbsp;
+            <span id=code>9</span>
+        </div>
+    </p>
+
+    <p>
+        直接三角函数参数的输入和反向三角函数参数的计算可以根据“R/ГРД/Г”（弧度/度/度）开关的位置以弧度、度或度进行。
+</p>
+<p>
+        <i>注：度、分和弧度之间的关系如下：360° = 400分 = 2π弧度。</i>
+    </p>
+
+    <p>
+        执行双操作数操作时，使用后缀波兰表示法，即先输入两个操作数，然后输入操作。数字的输入是通过普通方式完成的。
+</p>
+<p>
+        要分隔第一个数和第二个数，请按示例：
+        <div align=center>
+            <span id=but>3</span>&nbsp;<span id=but>B↑</span>&nbsp;
+            <span id=but>2</span>&nbsp;<span id=but>&times;</span>&nbsp;&nbsp;&rArr;&nbsp;&nbsp;
+            <span id=code>6</span>
+        </div>
+    </p>
+
+    <p>
+        如果显示器上显示了先前计算的结果，则在键盘上输入新数字会自动将信息从X寄存器移动到Y寄存器。
+</p>
+<p>
+这样，先前操作的结果可以作为第二个数参与后续计算。
+    </p>
+
+    <p>
+        如果执行了错误的操作，显示器上会显示错误信号<span id=code>EГГ0Г</span>。
+    </p>
+
+    <a name=stack></a><h4>使用堆栈内存</h4>
+    <p>
+        堆栈内存由四个寄存器X、Y、Z和T组成，它们按照后进先出（LIFO）的原则组织，即最后写入的信息必须首先被读取。
+    </p>
+    <p>
+        微计算器通电后，堆栈寄存器的初始状态为零：
+            <table align=center>
+                <tr><th>寄存器</th><th>状态</th><th>注释</th></tr>
+                <tr><td>T</td><td>0</td><td></td></tr>
+                <tr><td>Z</td><td>0</td><td></td></tr>
+                <tr><td>Y</td><td>0</td><td></td></tr>
+                <tr><td>X</td><td>0</td><td>始终显示</td></tr>
+            </table>
+    </p>
+    <p>
+        数字输入始终是在X寄存器中进行的。堆栈寄存器中的信息向上移动：<br>T - 丢失，<br>Z→T，<br>Y→Z，<br>X→Y，<br>X - 输入的值。
+            <table align=center>
+                <tr><th>寄存器</th><th>状态</th><th>键</th><th>状态</th></tr>
+                <tr><td>T</td><td>1</td><td rowspan=4 align=center><span id=but>5</span></td><td>2</td></tr>
+                <tr><td>Z</td><td>2</td><td>3</td></tr>
+                <tr><td>Y</td><td>3</td><td>4</td></tr>
+                <tr><td>X</td><td>4</td><td>5</td></tr>
+            </table>
+    </p>
+
+    <p>
+        按下键<span id=but>B↑</span>会将X寄存器中的数字副本传输到Y寄存器，并将Y寄存器的内容传输到Z寄存器，Z寄存器的内容传输到T寄存器。
+</p>
+<p>
+此时，X寄存器的内容保持不变，而T寄存器消失。
+        <table align=center>
+            <tr><th>寄存器</th><th>状态</th><th>键</th><th>状态</th></tr>
+            <tr><td>T</td><td>1</td>
+                <td rowspan=4 align=center><span id=but>B↑</span></td><td>2</td></tr>
+            <tr><td>Z</td><td>2</td><td>3</td></tr>
+            <tr><td>Y</td><td>3</td><td>4</td></tr>
+            <tr><td>X</td><td>4</td><td>4</td></tr>
+        </table>
+    </p>
+
+    <p>
+        按下键<span id=but>⇋</span>会交换X和Y寄存器的内容，而不影响Z和T。
+        <table align=center>
+            <tr><th>寄存器</th><th>状态</th><th>键</th><th>状态</th></tr>
+            <tr><td>T</td><td>1</td>
+                <td rowspan=4 align=center><span id=but>⇋</span></td><td>1</td></tr>
+            <tr><td>Z</td><td>2</td><td>2</td></tr>
+            <tr><td>Y</td><td>3</td><td>4</td></tr>
+            <tr><td>X</td><td>4</td><td>3</td></tr>
+        </table>
+    </<pot>
+    <p>
+        按下键<span id=but_f>f</span>&nbsp;<span id=op_f>⥀</span>会循环移动堆栈中的信息<br>T&rarr;Z,<br> Z&rarr;Y, <br>Y&rarr;X, <br>X&rarr;T。
+        <table align=center>
+            <tr><th>寄存器</th><th>状态</th><th>键</th><th>状态</th></tr>
+            <tr><td>T</td><td>1</td>
+                <td rowspan=4 align=center>
+                    <span id=but_f>f</span>&nbsp;<span id=op_f>⥀</span></td><td>4</td></tr>
+            <tr><td>Z</td><td>2</td><td>1</td></tr>
+            <tr><td>Y</td><td>3</td><td>2</td></tr>
+            <tr><td>X</td><td>4</td><td>3</td></tr>
+        </table>
+    </p>
+
+    <p>
+        在执行单操作数操作时，微计算器使用X寄存器中的数字进行操作，同时保留Y、Z和T寄存器的内容，而X寄存器中原来的数字被传输到前一个结果寄存器（XI寄存器）。
+</p>
+<p>
+单操作数操作的结果传输到X寄存器。
+    </p>
+
+    <p>
+        在执行双操作数操作时，微计算器使用X和Y寄存器中的数字进行操作。
+</p>
+<p>
+此时，堆栈寄存器中的信息按以下方式移动（下移）：
+        T&rarr;Z, Z&rarr;Y, X&rarr;XI, 操作结果&rarr;X。
+        <table align=center>
+                <tr><th>寄存器</th><th>状态</th><th>键</th><th>状态</th></tr>
+                <tr><td>T</td><td>1</td><td rowspan=4 align=center><span id=but>&times;</span></td><td>1</td></tr>
+                <tr><td>Z</td><td>2</td><td>1</td></tr>
+                <tr><td>Y</td><td>3</td><td>2</td></tr>
+                <tr><td>X</td><td>4</td><td>12</td></tr>
+            </table>
+    </p>
+
+    <a name=prog_mode></a><h3>计算器在“编程”模式下的工作</h3>
+    <p>
+        在“编程”模式下，微计算器通过按下键<span id=but_f>f</span>&nbsp;<span id=op_f>ПРГ</span>来设置。
+    </p>
+    
+    <a name=prog_mode_common></a><h4>一般信息</h4>
+
+<p>
+            在“编程”模式下，按下键盘上的<span id=but_f>f</span>&nbsp;<span id=op_f>PRG</span>键后，微型计算器就会进入编程模式。
+        </p>
+        
+        <a name=prog_mode_common></a><h4>通用信息</h4>
+
+        <p>
+            微型计算器中有一个特殊的程序存储器，由105个（在B3-34/MK-54中为98个）单元组成，以及一个由五位组成的返回栈。
+        </p>
+
+        <p>
+            在“编程”模式下按下键时，分配给该键或其与键<span id=but_f>f</span>、<span id=but_k>k</span>、<span id=but_b>X&rarr;П</span>、<span id=but_b>П&rarr;x</span>组合的操作代码、命令和数字的两位代码将被写入程序存储器。
+</p>
+<p>
+            操作代码见<a href="#table_keys">功能键用途表</a>和<a href="#table_prog_keys">编程时使用的键用途表</a>。
+        </p>
+
+        <p>输入的操作和命令序列，解决问题所需的，构成了程序。</p>
+
+        <p>程序存储器的第一个单元被赋予编号00，最后一个单元被赋予编号104（在B3-34/MK-54中为97）。
+</p>
+<p>
+在微型计算器中编写程序时，两位代码（程序步骤）占用程序存储器中的一个单元。
+</p>
+<p>
+            代码在程序存储器中的位置由地址确定。
+</p>
+<p>
+对于00到99的地址，使用相应的数字表示，而对于100到104的地址，高位两位数字用减号（-）表示（例如，地址100表示为"-0"）。
+        </p>
+
+        <p>为了控制程序的写入顺序和执行命令，在微型计算器中有一个地址计数器。这个计数器可以设置在任何起始地址（从00到104）。
+</p>
+<p>在编写程序时，将命令（操作）输入程序存储器会增加计数器的内容。
+</p>
+<p>
+为了使命令的执行顺序与程序中命令的写入顺序不同，为了重复程序的单独部分，为了根据中间计算结果改变执行顺序，在微型计算器中有改变地址计数器内容的命令。这些命令称为跳转命令。
+</p>
+
+<p>
+地址计数器的内容更改是按照写入跳转命令的地址进行的，无论是在程序存储器中，还是在可寻址寄存器中，或者在五位返回栈中 - 一个特殊的内存区域。
+</p>
+<p>
+如果跳转地址写入可寻址寄存器，则这种寻址称为“间接”。
+</p>
+<p>
+间接寻址也用于访问可寻址寄存器。在这种情况下，程序中代替直接指定被调用寄存器的编号，写入的是间接编号，即存储调用编号的寄存器的编号。
+        </p>
+
+        <p>
+            在“编程”模式下，指示器用于显示程序存储器中三个连续命令的代码和当前命令计数器的状态，即下一个命令将被写入的地址。例如，指示器上显示
+            <div align=center><span id=code>02 01 0E 06</span></div>
+            在这种情况下，指示器上的两位操作命令代码意味着：
+            <ol>
+                <li>代码<span id=code>06</span> - 当前地址计数器的状态；</li>
+                <li>代码<span id=code>0E</span>、<span id=code>01</span>、<span id=code>02</span> - 分别位于地址03、04、05的三个连续命令。</li>
+            </ol>
+        </p>
+
+        <a name=steps></a><h4>程序计算的步骤</h4>
+
+        <p>程序计算按以下顺序进行：
+            <ol>
+                <li>编程任务；</li>
+                <li>将程序输入内存并编辑程序；</li>
+                <li>调试程序；</li>
+                <li>输入原始数据并执行程序。</li>
+            </ol>
+        </p>
+
+        <p>
+            为了编写分支程序和多次执行程序的单独部分（子程序），使用跳转命令（直接和间接）、间接调用和写入指示命令、组织循环的命令。
+</p>
+
+<p>
+在编写的程序中，直接跳转命令和循环组织命令之后必须跟着跳转地址。间接命令的跳转地址包含在命令本身中。
+<p>
+<p>
+对于直接和间接跳转命令，00-99的跳转地址使用相应的数字键<span id=but>0</span> - <span id=but>9</span>输入。
+</p>
+<p>
+100 - 104的跳转地址仅用于直接命令，并使用键<span id=but>•</span>输入，该键对应数字10和其中一个键<span id=but>0</span>-<span id=but>4</span>。
+        </p>
+
+        <p>微型计算器中的返回栈提供了在程序内部创建子程序的可能性。子程序的深度由栈的位数决定，等于5。栈寄存器按照后进先出（LIFO）的原则工作。
+        </p>
+
+        <p>为了自动停止并指示计算结果，程序必须包含停止命令<span id=but_b>С/П</span>。
+        </p>
+
+        <p>
+            解决问题的程序可以从地址00开始，也可以从任意地址开始。
+</p>
+<p>
+            要从零地址输入程序，在“自动工作”模式下，需要按下清除程序计数器的键<span id=but_b>В/О</span>，然后按下键<span id=but_f>f</span>&nbsp;<span id=op_f>PRG</span>进入“编程”模式。
+</p>
+<p>
+在这种情况下，指示器将显示计数器地址00，从该地址开始输入程序。
+</p>
+<p>
+通过按下程序中记录的键来输入程序。
+</p>
+<p>
+要从任意地址输入程序，在“自动工作”模式下，需要按下键<span id=but_b>БП</span>，然后按下确保跳转到所需地址的键。切换到“编程”模式后，命令地址计数器上将设置程序输入的起始地址。
+        </p>
+
+        <p>
+            如果在输入程序时出错，需要纠正错误，就需要转到错误命令所在的地址。
+</p>
+
+<p>
+为此，可以使用键<span id=but_b>шг→</span>或<span id=but_b>←шг</span>，如果错误命令的地址离当前地址不远的话。
+</p>
+<p>
+每次按下这些键时，命令地址计数器的内容分别增加或减少一。
+</p>
+
+<p>
+如果错误发生在跳转地址处，则需要将信息移动两步，并重复输入命令和随后的跳转地址。
+</p>
+
+<p>
+如果错误命令和当前命令的地址相差很大，需要使用无条件跳转命令。
+</p>
+
+<p>
+为此，需要切换到“自动工作”模式，按下键<span id=but_b>БП</span>，然后按下确保跳转到所需地址的键。
+</p>
+<p>
+设置“编程”模式后，指示器上将显示错误命令的地址。通过按下所需操作或命令键来纠正错误。
+        </p>
+
+        <p>如果需要从程序中排除某个命令，转到要排除的命令的地址，然后按下键<span id=but_k>k</span>&nbsp;<span id=op_k>НОП</span>。
+</p>
+<p>
+程序存储器中将写入“无操作(nop)”命令，执行时不会执行任何操作。
+        </p>
+
+        <p>在“自动工作”模式下通过分析单个程序步骤的执行来进行程序调试。
+</p>
+<p>
+在“自动工作”模式下，通过按下键<span id=but_b>ПП</span>来执行单个命令。
+</p>
+<p>
+要调试程序，切换到“自动工作”模式，按下键<span id=but_f>f</span>&nbsp;<span id=op_f>АВТ</span>，输入程序工作的原始数据，设置已记录程序的起始地址，按下键<span id=but_b>ПП</span>并分析每个程序步骤的执行。
+</p>
+<p>
+在逐步查看程序执行时，需要注意跳转命令的执行和跳转地址的设置是在一个程序步骤中完成的。
+        </p>
+
+        <p>
+            要在“自动工作”模式下执行程序，在键盘上输入原始数据并将其存入所需的存储器地址（RG0 - RGe）或栈寄存器（X, Y, Z, T）。
+</p>
+<p>
+设置程序的起始地址并通过按下键<span id=but_b>ПП</span>逐步执行程序命令，或者按下键<span id=but_b>С/П</span>自动执行一系列程序步骤。
+        </p>
+
+        <p>按下键<span id=but_b>С/П</span>时伴随指示器点亮，这表明程序正在执行。
+</p>
+
+<p>
+程序的执行时间取决于其长度和计算性质。如果发生循环，即无限重复程序的某个部分，需要通过按下键<span id=but_b>С/П</span>来停止它，然后检查程序并消除循环的原因。
+        </p>
+
+        <p>执行程序后，在指示器上读取结果。</p>
+
+        <a name=goto></a><h4>跳转命令</h4>
+        <p>无条件跳转命令由键<span id=but_b>БП</span>实现。这个命令中断了程序命令的自然执行顺序，并执行跳转到跳转地址指定的命令。
+        </p>
+
+        <p>条件跳转命令（X≥0, X<0, X=0, X≠0）由键<span id=but_f>f</span>和条件键（<span id=op_f>Х≥0</span>, <span id=op_f>Х<0</span>, <span id=op_f>X=0</span>, <span id=op_f>X≠0</span>）实现。使用这些命令检查X寄存器的内容是否满足给定条件。
+</p>
+<p>
+如果不满足条件，则执行紧跟在条件跳转命令后面的命令。
+</p>
+<p>
+如果满足条件，则执行记录在跳转地址之后的命令。此时，不考虑跳转地址。
+        </p>
+
+        <p>跳转到子程序的命令由键<span id=but_b>ПП</span>实现。
+</p>
+<p>
+使用这个命令根据紧随跳转命令之后指定的地址跳转到子程序，并将下一个命令的地址记录在返回栈中。
+        </p>
+
+        <p>从子程序返回的命令由键<span id=but_b>В/О</span>实现。
+</p>
+<p>
+使用这个命令从返回栈中调用跳转到子程序的命令<span id=but_b>ПП</span>记录的地址，并跳转到该地址执行主程序的步骤。
+        </<p>
+
+        <p>通过<a href=#addr_mod>地址修改</a>的无条件间接跳转命令由键<span id=but_k>k</span>、<span id=but_b>БП</span>和可寻址寄存器键（<span id=but>0</span>-<span id=but>9</span>、<span id=reg>a</span>、<span id=reg>b</span>、<span id=reg>c</span>、<span id=reg>d</span>、<span id=reg>e</span>）实现。
+</p>
+<p>
+执行此命令时，将对存储在命令中包含的可寻址寄存器中的地址进行<a href=#addr_mod>地址修改</a>，并跳转到根据新（修改后的）地址记录的命令的执行。
+        </p>
+        
+<p><a name=addr_mod></a><H4>地址修改</H4>
+
+  </p>
+<p>
+根据命令中包含的寄存器编号进行。
+
+</p>
+<p>
+<span id=code> 减 1</span><br>
+如果命令包含RG0、RG1、RG2、RG3中的一个寄存器的编号，则在执行命令时，将从该寄存器（跳转地址）的内容中减去1；
+
+</p>
+<p>
+<span id=code> 加 1</span><br>
+如果编号为RG4、RG5、RG6中的一个寄存器，则将这些寄存器的内容加1；
+</p>
+<p>
+<span id=code> 不变 </span><br>
+如果编号为RG7、RG8、RG9、RGa、RGb、RGc、RGd、RGe中的一个寄存器，则这些寄存器的内容不变。
+        </p>
+
+        <p>条件间接跳转命令由键<span id=but_k>k</span>、条件键（<span id=op_f>Х≥0</span>、<span id=op_f>Х<0</span>、<span id=op_f>X=0</span>、<span id=op_f>X≠0</span>）和可寻址寄存器键（<span id=but>0</span>-<span id=but>9</span>、<span id=reg>a</span>、<span id=reg>b</span>、<span id=reg>c</span>、<span id=reg>d</span>、<span id=reg>e</span>）实现。
+</p>
+<p>
+使用此命令检查X寄存器的内容是否满足给定条件。
+</p>
+<p>
+            如果条件不满足，则进行<a href=#addr_mod>地址修改</a>，即修改存储在命令中包含的可寻址寄存器中的地址，并跳转到根据修改后的地址记录的命令的执行。
+</p>
+<p>
+如果条件满足，则跳转到执行下一个命令。此时，存储在可寻址寄存器中的地址不会被修改。
+        </p>
+
+        <p>间接跳转到子程序的命令由键<span id=but_k>k</span>、<span id=but_b>ПП</span>和可寻址寄存器键（<span id=but>0</span>-<span id=but>9</span>、<span id=reg>a</span>、<span id=reg>b</span>、<span id=reg>c</span>、<span id=reg>d</span>、<<span id=reg>e</span>）实现。使用此命令进行<a href=#addr_mod>地址修改</a>，即修改存储在命令中包含的可寻址寄存器中的地址，将下一个命令记录在返回栈中，并跳转到根据修改后的地址记录的命令的执行。
+        </<p>
+
+        <a name=loops></a><h4>组织循环</h4>
+        <p>组织循环的命令由键<span id=but_f>f</span>、<span id=op_f>L0</span>（或<span id=op_f>L1</span>、<span id=op_f>L2</span>、<span id=op_f>L3</span>）实现。按下键<span id=op_f>L0</span>（或<span id=op_f>L1</span>、<span id=op_f>L2</span>、<span id=op_f>L3</span>）时，会访问RG0（RG1、RG2、RG3）寄存器。
+</p>
+<p>
+每次访问该寄存器时，都会从中减去1，并分析其内容是否为零。
+</p>
+<p>
+如果寄存器的内容不为零，则跳转到执行紧跟在循环命令后面的命令；如果为零，则执行记录在循环命令后面的命令。
+        </p>
+
+        <a name=indir_reg></a><h4>间接访问寄存器</h4>
+        <p>间接写入寄存器的命令由键<span id=but_k>k</span>、<span id=but_b>x→П</span>和可寻址寄存器键（<span id=but>0</span>-<span id=but>9</span>、<span id=reg>a</span>、<span id=reg>b</span>、<span id=reg>c</span>、<span id=reg>d</span>、<span id=reg>e</span>）实现。使用此命令进行<a href=#addr_mod>地址修改</a>，即修改存储在命令中包含的可寻址寄存器中的内容，并将X寄存器的内容写入根据修改后的代码对应的寄存器。
+        </p>
+
+        <p>间接调用指示命令由键<span id=but_k>k</span>、<span id=but_b>П→x</span>和可寻址寄存器键实现。
+</p>
+<p>
+使用此命令进行<a href=#addr_mod>地址修改</a>，并调用X寄存器中存储的内容，该内容对应于修改后的代码。
+        </p>    
+
+
+    <a name=example1></a><h3>解二次方程的程序</h3>
+
+<p> 下面是一个使用微计算器解二次方程
+	<b>a</b><i>x</i><sup>2</sup> + <b>b</b><i>x</i> + <b>c</b> = 0的程序示例。 
+</p> 
+
+<p> 假设a、b和c的值已经存储在可寻址寄存器RG0、RG1和RG2中。 
+</p>
+
+        <table>
+            <tr><th>地址</th><th>命令</th><th>代码</th><th>注释</th></tr>
+            <tr><td><span id=code>00</span></td>
+                <td><span id=but_b>П&rarr;Х</span>&nbsp;<span id=reg>b</span></td>
+                <td><span id=code>6L</span></td>
+                <td></td></tr>
+            <tr><td><span id=code>01</span></td>
+                <td><span id=but_f>f</span>&nbsp;<span id=op_f>x<sup>2</sup></span></td>
+                <td><span id=code>22</span></td>
+                <td></td></tr>
+            <tr><td><span id=code>02</span></td>
+                <td><span id=but_b>П&rarr;Х</span>&nbsp;<span id=reg>c</span></td>
+                <td><span id=code>6C</span></td>
+                <td></td></tr>
+            <tr><td><span id=code>03</span></td>
+                <td><span id=but_b>П&rarr;Х</span>&nbsp;<span id=reg>a</span></td>
+                <td><span id=code>6-</span></td>
+                <td></td></tr>
+            <tr><td><span id=code>04</span></td>
+                <td><span id=but>4</span></td>
+                <td><span id=code>04</span></td>
+                <td>
+                    栈内存状态
+                    <table>
+                        <tr><th>寄存器</th><th>内容</th></tr>
+                        <tr><td>T</td><td><b>b</b><sup>2</sup></td></tr>
+                        <tr><td>Z</td><td><b>c</b></td></tr>
+                        <tr><td>Y</td><td><b>a</b></td></tr>
+                        <tr><td>X</td><td>4</td></tr>
+                    </table>
+                </td></tr>
+            <tr><td><span id=code>05</span></td>
+                <td><span id=but>&times;</span></td>
+                <td><span id=code>12</span></td>
+                <td></td></tr>
+            <tr><td><span id=code>06</span></td>
+                <td><span id=but>&times;</span></td>
+                <td><span id=code>12</span></td>
+                <td></td></tr>
+            <tr><td><span id=code>07</span></td>
+                <td><span id=but>-</span></td>
+                <td><span id=code>11</span></td>
+                <td></td></tr>
+            <tr><td><span id=code>08</span></td>
+                <td><span id=but_f>f</span>&nbsp;<span id=op_f>√</span></td>
+                <td><span id=code>21</span></td>
+                <td></td></tr>
+            <tr><td><span id=code>09</span></td>
+                <td><span id=but_b>X&rarr;П</span>&nbsp;<span id=reg>d</span></td>
+                <td><span id=code>4Г</span></td>
+                <td>将值 &radic;(<b>b</b><sup>2</sup>-4<b>ac</b>) 保存到寄存器 <span id=reg>d</span></td></tr>
+            <tr><td><span id=code>10</span></td>
+                <td><span id=but_b>П&rarr;Х</span>&nbsp;<span id=reg>b</span></td>
+                <td><span id=code>6L</span></td>
+                <td></td></tr>
+            <tr><td><span id=code>11</span></td>
+                <td><span id=but>/-/</span></td>
+                <td><span id=code>0L</span></td>
+                <td></td></tr>
+            <tr><td><span id=code>12</span></td>
+                <td><span id=but_b>X&rarr;П</span>&nbsp;<span id=reg>b</span></td>
+                <td><span id=code>4L</span></td>
+                <td>将值 -<b>b</b> 保存到寄存器 <span id=reg>b</span> 以供进一步计算</td></tr>
+            <tr><td><span id=code>13</span></td>
+                <td><span id=but_b>П&rarr;Х</span>&nbsp;<span id=reg>d</span></td>
+                <td><span id=code>6Г</span></td>
+                <td></td></tr>
+            <tr><td><span id=code>14</span></td>
+                <td><span id=but>+</span></td>
+                <td><span id=code>10</span></td>
+                <td></td></tr>
+            <tr><td><span id=code>15</span></td>
+                <td><span id=but_b>П&rarr;Х</span>&nbsp;<span id=reg>a</span></td>
+                <td><span id=code>6-</span></td>
+                <td></td></tr>
+            <tr><td><span id=code>16</span></td>
+                <td><span id=but>2</span></td>
+                <td><span id=code>02</span></td>
+                <td></td></tr>
+            <tr><td><span id=code>17</span></td>
+                <td><span id=but>&times;</span></td>
+                <td><span id=code>12</span></td>
+                <td>
+                    栈内存状态
+                    <table>
+                        <tr><th>寄存器</th><th>内容</th></tr>
+                        <tr><td>Y</td><td>-<b>b</b> + &radic;(<b>Г</b>)</td></tr>
+                        <tr><td>X</td><td>2<b>a</b></td></tr>
+                    </table>
+                </td></tr>
+            <tr><td><span id=code>18</span></td>
+                <td><span id=but_b>X&rarr;П</span>&nbsp;<span id=reg>a</span></td>
+                <td><span id=code>4-</span></td>
+                <td>将值 2<b>a</b> 保存到寄存器 <span id=reg>a</span> 以供进一步计算</td></tr>
+            <tr><td><span id=code>19</span></td>
+                <td><span id=but>&divide;</span></td>
+                <td><span id=code>13</span></td>
+                <td>寄存器X中的第一个根 <i>x</i><sub>1</sub></td></tr>
+            <tr><td><span id=code>20</span></td>
+                <td><span id=but_b>П&rarr;Х</span>&nbsp;<span id=reg>b</span></td>
+                <td><span id=code>6L</span></td>
+                <td></td></tr>
+            <tr><td><span id=code>21</span></td>
+                <td><span id=but_b>П&rarr;Х</span>&nbsp;<span id=reg>d</span></td>
+                <td><span id=code>6Г</span></td>
+                <td></td></tr>
+            <tr><td><span id=code>22</span></td>
+                <td><span id=but>-</span></td>
+                <td><span id=code>11</span></td>
+                <td></td></tr>
+            <tr><td><span id=code>23</span></td>
+                <td><span id=but_b>П&rarr;Х</span>&nbsp;<span id=reg>a</span></td>
+                <td><span id=code>6-</span></td>
+                <td></td></tr>
+            <tr><td><span id=code>24</span></td>
+                <td><span id=but>&divide;</span></td>
+                <td><span id=code>13</span></td>
+                <td>
+                    栈内存状态
+                    <table>
+                        <tr><th>寄存器</th><th>内容</th></tr>
+                        <tr><td>Y</td><td><i>x</i><sub>1</sub></td></tr>
+                        <tr><td>X</td><td><i>x</i><sub>2</sub></td></tr>
+                    </table>
+                </td></tr>
+            <tr><td><span id=code>25</span></td>
+                <td><span id=but_b>С/П</span></td>
+                <td><span id=code>50</span></td>
+                <td>停止程序</td></tr>
+        </table>
+
+	
+<a name=example_calc1></a><h4>执行计算</h4>
+<p>
+在执行计算之前，需要将系数<b>a</b>、<b>b</b>、<b>c</b>分别输入到寄存器<span id=reg>a</span>、<span id=reg>b</span>、<span id=reg>c</span>中。停止后，在寄存器X中找到一个根，在寄存器Y中找到第二个根。如果方程没有实数根，在屏幕上将显示
+<div align=center><span id=code>EГГ0Г</span></div>
+</p>
+        <p>
+            让我们考虑解方程<i>x</i><sup>2</sup>+2<i>x</i>-3=0
+        </p>
+        <p>1. <span id=but>1</span> <span id=but_b>X&rarr;П</span>&nbsp;<span id=reg>a</span></p>
+        <p>2. <span id=but>2</span> <span id=but_b>X&rarr;П</span>&nbsp;<span id=reg>b</span></p>
+        <p>3. <span id=but>3</span> <span id=but>/-/</span> <span id=but_b>X&rarr;П</span>&nbsp;<span id=reg>c</span></p>
+        <p>4. <span id=but_b>В/О</span>&nbsp;<span id=but_b>C/П</span></p>
+        <p>5. <span id=code>-3.</span></p>
+        <p>6. <span id=but>⇋</span></p>
+	<p>7. <span id=code> 1.</span></p>。 
+	
+ <a name=example2></a><h3>蒙特卡洛方法求圆周率的程序</h3>
+
+<p> 下面是一个使用蒙特卡洛方法求圆周率的程序示例。 
+</p> 
+
+
+
+<p> 蒙特·卡罗方法（Monte Carlo method），也称统计模拟方法，是二十世纪四十年代中期由于科学技术的发展和电子计算机的发明，而被提出的一种以概率统计理论为指导的一类非常重要的数值计算方法。是指使用随机数（或更常见的伪随机数）来解决很多计算问题的方法。
+
+蒙特卡罗方法是一种计算方法。原理是通过大量随机样本，去了解一个系统，进而得到所要计算的值。
+
+它非常强大和灵活，又相当简单易懂，很容易实现。对于许多问题来说，它往往是最简单的计算方法，有时甚至是唯一可行的方法。
+
+它诞生于上个世纪40年代美国的"曼哈顿计划"，名字来源于赌城蒙特卡罗，象征概率。
+</p>
+
+<p>
+<a href="https://www.cnblogs.com/Flat-White/p/14807002.html">蒙特卡洛算法介绍参考自这里</a>
+</p>
+
+<p>
+<a href="https://rosettacode.org/wiki/Monte_Carlo_methods">蒙特卡洛算法程序代码来自 RossetaCode.org</a>
+</p>
+
+<p>
+算法原理
+</p>
+
+<p>
+以原点（0，0）为圆心，1 为半径，画一个圆。<br>
+第一象限内圆的面积为：S<sub>1</sub> = π/4
+</p>
+
+<p>
+以原点（0，0）和点（1，1）连成的线段为对角线，画一个正方形。<br>
+正方形的面积为：S<sub>2</sub> = 1
+</p>
+
+<p>
+考察圆在第一象限内的面积跟正方形面积的比：
+S<sub>1</sub>/S<sub>2</sub> = π/4
+</p>
+
+<p>
+在区间 x ∈ [0，1]，y ∈ [0，1]，随机选择 x 和 y，组成一个点（x，y），那么这个点落在圆内的概率与这个点落在正方形内的概率之比就是第一象限内圆面积跟正方形面积之比，也就是 π/4。
+</p>
+
+<p>
+所以可以通过计算落在圆内的概率来求得圆周率，取的点个数越多，得到的圆周率越准确。
+</p>
+
+<p>
+寄存器使用说明
+</p>
+
+<p>
+Reg <span id=reg> 0 </span>：<br>
+迭代次数 n，在这里做循环变量，会从最大值减少到1。
+</p>
+
+<p>
+Reg <span id=reg> 1 </span>：<br>
+迭代次数 n，在这里做为全部实验次数，常量不变。
+</p>
+
+<p>
+Reg <span id=reg> 4 </span>：<br>
+用于记录所有落在第一象限圆内的点的总的个数。
+</p>
+
+
+
+        <table>
+            <tr><th>地址</th><th>命令</th><th>代码</th><th>注释</th></tr>
+            <tr><td><span id=code>00</span></td>
+                <td><span id=but_b>X&rarr;П</span>&nbsp;<span id=but>0</span></td>
+                <td><span id=code>40</span></td>
+                <td>把Reg <span id=reg> X </span>中的值保存到 Reg <span id=reg> 0 </span>中，本例使用  n ＝1000</td></tr>
+
+	    <tr><td><span id=code>01</span></td>
+                <td><span id=but_b>X&rarr;П</span>&nbsp;<span id=but>1</span></td>
+                <td><span id=code>41</span></td>
+                <td>把 Reg <span id=reg> X </span>中的值保存到 Reg <span id=reg> 1 </span>中</td></tr>
+
+            <tr><td><span id=code>02</span></td>
+                <td><span id=but_b>0</span></td>
+                <td><span id=code>00</span></td>
+                <td> 0 → Reg <span id=reg> X </span></td></tr>
+
+	    <tr><td><span id=code>03</span></td>
+                <td><span id=but_b>X&rarr;П</span>&nbsp;<span id=but>4</span></td>
+                <td><span id=code>44</span></td>
+                <td> Reg <span id=reg> X </span>（此时为0）→ Reg <span id=reg> 4 </span></td></tr>
+
+            <tr><td><span id=code>04</span></td>
+                <td><span id=but_k>k</span>&nbsp;<span id=op_k>СЧ</span></td>
+                <td><span id=code>3L</span></td>
+                <td>取得第一个随机数<b><i>y</i></b><sub>1</sub>，取值区间为：[0，1] </td></tr>
+
+	    <tr><td><span id=code>05</span></td>
+                <td><span id=but_f>f</span>&nbsp;<span id=op_f>x<sup>2</sup></span></td>
+                <td><span id=code>22</span></td>
+                <td><b><i>y</i></b><sub>1</sub>平方</td></tr>
+            
+            <tr><td><span id=code>06</span></td>
+                <td><span id=but_b>B↑</span></td>
+                <td><span id=code>0E</span></td>
+                <td> Reg <span id=reg> X </span>（此时为: <b><i>y</i></b><sub>1</sub><sup>2</sup>）→ Reg <span id=reg> Y </span></td></tr>
+
+	    <tr><td><span id=code>07</span></td>
+                <td><span id=but_k>k</span>&nbsp;<span id=op_k>СЧ</span></td>
+                <td><span id=code>3L</span></td>
+                <td>取得第二个随机数<b><i>x</i></b><sub>1</sub>，取值区间为：[0，1] </td></tr>
+
+	    <tr><td><span id=code>08</span></td>
+                <td><span id=but_f>f</span>&nbsp;<span id=op_f>x<sup>2</sup></span></td>
+                <td><span id=code>22</span></td>
+                <td><b><i>x</i></b><sub>1</sub>平方<br>
+		栈内存状态
+                    <table>
+                        <tr><th>寄存器</th><th>内容</th></tr>              
+		
+                        <tr><td>Reg Y</td><td><b><i>y</i></b><sub>1</sub><sup>2</sup></td></tr>
+                        <tr><td>Reg X</td><td><b><i>x</i></b><sub>1</sub><sup>2</sup></td></tr>
+
+	<tr><td>......</td><td><b>......</b></td></tr>
+
+<tr><td>Reg 0</td><td><b>1000</b></td></tr>
+
+<tr><td>Reg 1</td><td><b>1000</b></td></tr>
+
+<tr><td>Reg 4</td><td><b>0</b></td></tr>
+			
+
+                    </table>
+		</td></tr>
+
+            <tr><td><span id=code>09</span></td>
+                <td><span id=but>+</span></td>
+                <td><span id=code>10</span></td>
+                <td> Reg <span id=reg> X </span> + Reg <span id=reg> Y </span>（即 <i>y</i></b><sub>1</sub><sup>2</sup> + <i>x</i></b><sub>1</sub><sup>2</sup>）→ Reg <span id=reg> X </span></td></tr>
+
+            <tr><td><span id=code>10</span></td>
+                <td><span id=but>1</span></td>
+                <td><span id=code>01</span></td>
+                <td> 1 → Reg <span id=reg> X </span></td></tr>
+
+            <tr><td><span id=code>11</span></td>
+                <td><span id=but>-</span></td>
+                <td><span id=code>11</span></td>
+                <td> Reg <span id=reg> Y </span> - Reg <span id=reg> X </span>，相当于 <i>y</i></b><sub>1</sub><sup>2</sup> + <i>x</i></b><sub>1</sub><sup>2</sup> -1</td></tr>
+
+	    <tr><td><span id=code>12</span></td>
+                <td><span id=but_f>f</span>&nbsp;<span id=op_f>x&lt;0</span></td>
+                <td><span id=code>5C</span></td>
+                <td>判断 <i>y</i></b><sub>1</sub><sup>2</sup> + <i>x</i></b><sub>1</sub><sup>2</sup> -1 &lt 0 是否成立</td></tr>
+
+            <tr><td><span id=code>13</span></td>
+                <td><span id=but>1</span>&nbsp;<span id=but>5</span></td>
+                <td><span id=code>15</span></td>
+                <td>如果 <i>y</i></b><sub>1</sub><sup>2</sup> + <i>x</i></b><sub>1</sub><sup>2</sup> -1 &lt 0 为假，说明两次取的随机数构成的点（<i>x</i></b><sub>1</sub>， <i>y</i></b><sub>1</sub>）落在了第一象限半径为1的圆外，则跳转到第 15 行</td></tr>
+
+	    <tr><td><span id=code>14</span></td>
+                <td><span id=but_k>k</span>&nbsp;<span id=but_b>П&rarr;X</span>&nbsp;<span id=but>4</span></td></td>
+                <td><span id=code>Г4</span></td>
+                <td>如果 <i>y</i></b><sub>1</sub><sup>2</sup> + <i>x</i></b><sub>1</sub><sup>2</sup> -1 &lt 0 为真，说明两次取的随机数构成的点落在圆内，此时利用间接寻址指令的<a href=#addr_mod>地址修改</a>的特点，让 Reg <span id=reg> 4 </span>中的值加1 </td></tr>
+
+	    <tr><td><span id=code>15</span></td>
+                <td><span id=but_f>f</span>&nbsp;<span id=op_f>L0</span></td>
+                <td><span id=code>5Г</span></td>
+                <td>进入循环，Reg <span id=reg> 0 </span>中的值（迭代次数）减去 1 </td></tr>
+
+            <tr><td><span id=code>16</span></td>
+                <td><span id=but>0</span>&nbsp;<span id=but>4</span></td>
+                <td><span id=code>04</span></td>
+                <td>若循环未结束，则执行该行指令：跳转到第 04 行，再次取随机数，进行下一轮迭代</td></tr>
+
+	    <tr><td><span id=code>17</span></td>
+                <td><span id=but_b> П&rarr;X</span>&nbsp;<span id=but>4</span></td></td>
+                <td><span id=code>64</span></td>
+                <td>若循环结束，则执行该行指令：Reg <span id=reg> 4 </span>（也就是所有落到第一象限圆内的点的个数）→ Reg <span id=reg> X </span>
+<br>
+		栈内存状态
+                    <table>
+                        <tr><th>寄存器</th><th>内容</th></tr>
+			
+               		
+                        <tr><td>Reg Y</td><td>4</td></tr>
+                        <tr><td>Reg X</td><td>圆内点个数</td></tr>
+
+<tr><td>......</td><td><b>......</b></td></tr>
+
+<tr><td>Reg 0</td><td><b>1</b></td></tr>
+
+<tr><td>Reg 1</td><td><b>1000</b></td></tr>
+
+<tr><td>Reg 4</td><td><b>圆内点个数</b></td></tr>
+			
+
+                    </table>
+</td></tr>
+
+            <tr><td><span id=code>18</span></td>
+                <td><span id=but>4</span></td>
+                <td><span id=code>04</span></td>
+                <td> 4 → Reg <span id=reg> X </span></td></tr>
+
+            <tr><td><span id=code>19</span></td>
+                <td><span id=but>&times;</span></td>
+                <td><span id=code>12</span></td>
+                <td>4 * Reg <span id=reg> X </span> → Reg <span id=reg> X </span> </td></tr>
+
+	    <tr><td><span id=code>20</span></td>
+                <td><span id=but_b> П&rarr;X</span>&nbsp;<span id=but>1</span></td></td>
+                <td><span id=code>61</span></td>
+                <td> Reg <span id=reg> 1 </span>（也就是总实验次数，这里是1000） → Reg <span id=reg> X </span></td></tr>
+
+            <tr><td><span id=code>21</span></td>
+                <td><span id=but>&divide;</span></td>
+                <td><span id=code>13</span></td>
+                <td>根据公式 (4/n) * Reg <span id=reg> Y </span>， 得到的值就是 π 的期望值，保存在 Reg <span id=reg> X </span>中</td></tr>
+
+            <tr><td><span id=code>22</span></td>
+                <td><span id=but_b>С/П</span></td>
+                <td><span id=code>50</span></td>
+                <td>停止程序</td></tr>
+
+
+            
+        </table>
+
+
+<a name=example_calc2></a><h4>执行计算</h4>
+<p>
+在执行计算之前，需要将迭代次数（也就是取样次数）<b>n（可以取10，100，1000或更大的数）</b> 输入到 Reg <span id=reg>X</span> 中。
+</p>
+<p>
+程序会自动把数据从 Reg <span id=reg>X</span> 传给 Reg <span id=reg>0</span>，Reg <span id=reg>1</span>，然后利用它进行计算。
+</p> 
+<p>
+当完成迭代次数时，程序会自动停止，在寄存器X中存放的就是计算出来的圆周率值。
+</p>
+<p>
+说明：选择1000大概需要运行30分钟左右。
+
+
+
+</p>
+        <p>
+            让我们准备好参数（ <i>n</i>=1000）运行这个程序
+        </p>
+        <p>1. <span id=but>1</span>&nbsp;<span id=but>0</span>&nbsp;<span id=but>0</span>&nbsp;<span id=but>0</span></p>
+        
+        <p>2. <span id=but_b>В/О</span>&nbsp;<span id=but_b>C/П</span></p>
+        <p>3. 屏幕闪烁，等待......较长时间后，屏幕停止闪烁，显示数字： </p>
+        <p>4. <span id=code>3.116</span></p>
+<p>	
+全文结束
+</p>
+
+<div align=center><a name=translation><span id=code>翻译说明</span></a></div>
+
+<p>
+版本: <span id=code>0.001</span>
+</p>
+
+<p>
+时间: <span id=code>2024-08-17</span>
+</p>
+
+<p>
+译者: <span id=code>FreeBlues</span>
+</p>
+
+<p>
+QQ：<span id=code>642160780</span>
+</p>
+
+<p>
+计算器爱好者QQ群: <span id=code>812224709/435067924</span>
+</p>
+
+<p>
+中文版增加了一个示例程序<a href=#example2>蒙特卡洛方法求圆周率的程序</a>，之所以增加这个程序：
+</p>
+
+<p>
+一方面是因为这个简短的程序使用了 MK-61 编程语言的几种典型功能：循环，跳转，间接寻址，很好地演示了这些用法，是一个特别好的例程；
+</p>
+
+<p>
+另一方面是笔者最近在看一本关于蒙特卡洛方法的书，正好想在 MK-61 这款可编程计算器上试试。
+</p>
+
+<p>
+结论是：早期计算器不适合做这种通过反复迭代来逼近结果的运算，太慢了。
+</p>
+
+<p>
+特别说明：全文AI翻译，因为实在不懂俄语，若有不准确的地方请指出，谢谢！
+</p>
+
+<p>
+<a href="http://htmlpreview.github.io/?https://github.com/xvadim/pmk-android/blob/master/instruction/instruction.html">俄文手册原文链接</a>
+</p>
+
+    </body> 
+</html>
